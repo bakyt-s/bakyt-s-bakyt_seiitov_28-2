@@ -1,4 +1,5 @@
 {% extends 'layouts/index.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -26,7 +27,11 @@
     </style>
 
     <div class="post_block">
-        <img src="/media/{{ product.image }}/" alt="">
+        {% if product.image %}
+            <img src="/media/{{ product.image }}/" alt="">
+        {% else %}
+            <img src="{% static 'placeholder.png' %}" alt="">
+        {% endif %}
         <h4>Rate: {{ product.rate }}</h4>
         <h1>{{ product.title }}</h1>
         <h5>{{ product.description }}</h5>
